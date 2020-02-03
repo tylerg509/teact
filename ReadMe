@@ -1,1 +1,2 @@
-parcel run index.html in root folder
+TO RUN: "parcel run index.html" in root folder
+TO RUN SERVER: "json-server -w db.json" in root folder
