@@ -1,17 +1,12 @@
-import axios, {AxiosResponse} from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 interface UserProps {
   name?: string;
   age?: number;
-  id?: number
+  id?: number;
 }
 
-//since this returns nothing use void instead of an empyty object
-type Callback = () => void;
-
 export class User {
-    //we don't know what they key is so we are just using 'key' as the key of type string
-  events: { [key: string]: Callback[] } = {};
   constructor(private data: UserProps) {}
 
   get(propName: string): number | string {
@@ -23,40 +18,21 @@ export class User {
     Object.assign(this.data, update);
   }
 
-  on(eventName: string, callback: Callback): void {
-    //this.events[eventName] //callback[] or undefined
-    const handlers = this.events[eventName] || []
-    handlers.push(callback)
-    this.events[eventName] = handlers;
+  async fetch(): Promise<void> {
+    const response: AxiosResponse = await axios.get(
+      `http://localhost:3000/users/${this.get('id')}`
+    );
+    this.set(response.data);
   }
 
-  trigger(eventName: string):void{
-      const handlers = this.events[eventName];
-
-      if(!handlers || handlers.length ===0){
-          return
-      }
-
-      handlers.forEach(callback=>{
-          callback()
-      })
-  }
-
-  async fetch(): Promise<void>{
-    const response:AxiosResponse = await axios.get(`http://localhost:3000/users/${this.get('id')}`)
-    this.set(response.data)
-
-  }
-
-  save(): void{
-      const id = this.get('id')
-      if(id) {
-          //put
-        axios.put(`http://localhost:3000/users/${id}`, this.data)
-      } else {
-          //post
-        axios.post('http://localhost:3000/users',this.data)
-      }
+  save(): void {
+    const id = this.get('id');
+    if (id) {
+      //put
+      axios.put(`http://localhost:3000/users/${id}`, this.data);
+    } else {
+      //post
+      axios.post('http://localhost:3000/users', this.data);
     }
-
+  }
 }
