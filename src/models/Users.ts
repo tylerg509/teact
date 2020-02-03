@@ -1,6 +1,9 @@
+import axios, {AxiosResponse} from 'axios';
+
 interface UserProps {
   name?: string;
   age?: number;
+  id: number
 }
 
 //since this returns nothing use void instead of an empyty object
@@ -38,5 +41,11 @@ export class User {
           callback()
       })
   }
+
+  async fetch(): Promise<void>{
+    const response:AxiosResponse = await axios.get(`http://localhost:3000/users/${this.get('id')}`)
+    this.set(response.data)
+
+    }
 
 }
