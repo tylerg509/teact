@@ -1,6 +1,6 @@
 interface UserProps{
-    name: string;
-    age: number
+    name?: string;
+    age?: number
 }
 
 export class User{
@@ -8,5 +8,10 @@ export class User{
 
     get(propName: string): (number | string){
         return this.data[propName]
+    }
+
+    set(update: UserProps):void{
+        //this.data will get overwritten with update data
+        Object.assign(this.data, update);
     }
 }
