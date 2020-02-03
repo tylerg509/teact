@@ -6,6 +6,7 @@ interface HasId{
     id: number;
 }
 
+//must pass type that has an id property
 export class Sync<T extends HasId> {
   constructor(public rootUrl: string) {}
   fetch(id: number): AxiosPromise {
