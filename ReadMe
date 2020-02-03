@@ -1,2 +1,6 @@
 TO RUN: "parcel run index.html" in root folder
 TO RUN SERVER: "json-server -w db.json" in root folder
+
+TO RUN WITH SCRIPTS
+RUN: npm run start:db
+RUN DB: npm run start:parcel
