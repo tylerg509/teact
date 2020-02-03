@@ -1,7 +1,5 @@
 import { User } from './models/Users';
 
-const user = new User({ id: 1 });
+const user = new User({name: 'new record name', age: 900});
 
-user.set({name: 'Nice NAME', age: 20})
-
-user.save();
+user.save()
