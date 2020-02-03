@@ -1,12 +1,20 @@
 import axios, { AxiosResponse } from 'axios';
-
+import {Eventing} from './Eventing'
 interface UserProps {
   name?: string;
   age?: number;
   id?: number;
 }
-
+/* 
+* @class User
+* @property attributes: Attributes
+* @property events: Events
+* @property sync: Sync
+*/
 export class User {
+  //hard coding eventing because we don't think this will change. Makes it easier for user
+  events: Eventing = new Eventing();
+
   constructor(private data: UserProps) {}
 
   get(propName: string): number | string {

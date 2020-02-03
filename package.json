@@ -5,8 +5,8 @@
   "dependencies": {
     "axios": "^0.19.2"
   },
-  "scripts":{
+  "scripts": {
     "start:db": "json-server -w db.json",
-    "start:parcel":"parcel index.html"
+    "start:parcel": "parcel index.html"
   }
 }
