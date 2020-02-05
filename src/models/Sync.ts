@@ -3,7 +3,7 @@ import { User } from './Users';
 
 //without this interface typescript does not know that data: T will contain a property of id
 interface HasId{
-    id: number;
+    id?: number;
 }
 
 //must pass type that has an id property
