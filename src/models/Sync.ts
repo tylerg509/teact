@@ -1,5 +1,4 @@
-import axios, { AxiosResponse, AxiosPromise } from 'axios';
-import { User } from './Users';
+import axios, { AxiosPromise } from 'axios';
 
 //without this interface typescript does not know that data: T will contain a property of id
 interface HasId{

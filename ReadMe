@@ -4,3 +4,9 @@ TO RUN SERVER: "json-server -w db.json" in root folder
 TO RUN WITH SCRIPTS
 RUN: npm run start:db
 RUN DB: npm run start:parcel:
+
+
+////
+1) In Typescript strings can be Types
+2) In JS (and TS), all object keys are strings
+
