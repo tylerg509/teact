@@ -19,10 +19,10 @@ export class User {
   //hard coding eventing because we don't think this will change. Makes it easier for user
   public events: Eventing = new Eventing();
   public sync: Sync<UserProps> = new Sync<UserProps>(rootUrl)
-  public attrubutes: Attributes<UserProps>;
+  public attributes: Attributes<UserProps>;
 
   constructor(attrs: UserProps){
-    this.attrubutes = new Attributes<UserProps>(attrs)
+    this.attributes = new Attributes<UserProps>(attrs)
   }
 
 
