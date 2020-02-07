@@ -5,7 +5,7 @@ export class Attributes<T>{
     //K can only ever be one of the type of name age or id
     //T is variable for an interface //T is of type k must be name age or id
     //take name age id and look up in interface and return the result
-    get<K extends keyof T>(key: K): T[K] {
+    get = <K extends keyof T>(key: K): T[K] => {
         return this.data[key];
     }
     
