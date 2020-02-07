@@ -8,7 +8,8 @@ user.on('change', ()=>{
     console.log(' user was changed')
 })
 
-user.trigger('change')
+
+user.set({name: 'New name'})
 
 // user.attributes.get('id')
 // user.attributes.get('name')
