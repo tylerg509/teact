@@ -1,6 +1,7 @@
 import { Eventing } from './Eventing';
 import { Sync } from './Sync';
 import { Attributes } from './Attributes';
+import { AxiosResponse } from 'axios';
 export interface UserProps {
   name?: string;
   age?: number;
@@ -44,6 +45,17 @@ export class User {
   set(update: UserProps): void {
     this.attributes.set(update)
     this.events.trigger('change')
+  }
+
+  async fetch(): Promise<void>{
+    const id = this.attributes.get('id')
+
+    if(typeof id !== 'number'){
+      throw new Error ('Cannot fetch without an id')
+    }
+
+    let response: AxiosResponse = await this.sync.fetch(id)
+    this.set(response.data)
   }
 
 }
